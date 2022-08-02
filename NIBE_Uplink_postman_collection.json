@@ -1,0 +1,865 @@
+{
+	"info": {
+		"_postman_id": "183cf5f0-f67e-4541-a12b-c792bcb4c35f",
+		"name": "NIBE Anonymized",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2056075"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "1. Authorize endpoint",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.nibeuplink.com/oauth/authorize?response_type=code&client_id={{client_id}}&scope={{scope}}&redirect_uri={{redirect_uri}}&state={{state}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nibeuplink",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}"
+								},
+								{
+									"key": "scope",
+									"value": "{{scope}}"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirect_uri}}"
+								},
+								{
+									"key": "state",
+									"value": "{{state}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Token endpoint - Authorization Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "{{code}}",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirect_uri}}",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "{{scope}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.nibeuplink.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nibeuplink",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Token endpoint - Refresh Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.nibeuplink.com/oauth/token",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nibeuplink",
+								"com"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Functions",
+			"item": [
+				{
+					"name": "Software",
+					"item": [
+						{
+							"name": "Software",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.nibeuplink.com/api/v1/software?serialNumber={{serialno}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"nibeuplink",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"software"
+									],
+									"query": [
+										{
+											"key": "serialNumber",
+											"value": "{{serialno}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "System",
+					"item": [
+						{
+							"name": "Notifications",
+							"item": [
+								{
+									"name": "System Notifications",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/notifications",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"notifications"
+											],
+											"query": [
+												{
+													"key": "active",
+													"value": "false",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Parameters",
+							"item": [
+								{
+									"name": "System Parameters",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/parameters",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"parameters"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Premium",
+							"item": [
+								{
+									"name": "System Premium",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/premium",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"premium"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Service Info",
+							"item": [
+								{
+									"name": "System Service Info Categories",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/serviceinfo/categories",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"serviceinfo",
+												"categories"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "System Service Info STATUS",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/serviceinfo/categories/STATUS",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"serviceinfo",
+												"categories",
+												"STATUS"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "System Service Info CPR_INFO_EP14",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/serviceinfo/categories/CPR_INFO_EP14",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"serviceinfo",
+												"categories",
+												"CPR_INFO_EP14"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "System Service Info SYSTEM_1",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/serviceinfo/categories/SYSTEM_1",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"serviceinfo",
+												"categories",
+												"SYSTEM_1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "System Service Info ADDITION",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/serviceinfo/categories/ADDITION",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"serviceinfo",
+												"categories",
+												"ADDITION"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "System Service Info SMART_PRICE_ADAPTION",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/serviceinfo/categories/SMART_PRICE_ADAPTION",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"serviceinfo",
+												"categories",
+												"SMART_PRICE_ADAPTION"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "System Service Info AUX_IN_OUT",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/serviceinfo/categories/AUX_IN_OUT",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"serviceinfo",
+												"categories",
+												"AUX_IN_OUT"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "System Service Info SYSTEM_INFO",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/serviceinfo/categories/SYSTEM_INFO",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"serviceinfo",
+												"categories",
+												"SYSTEM_INFO"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Smart Home",
+							"item": [
+								{
+									"name": "System Smarthome Mode",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/smarthome/mode",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"smarthome",
+												"mode"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "System Smarthome Thermostats",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/smarthome/thermostats",
+											"protocol": "https",
+											"host": [
+												"api",
+												"nibeuplink",
+												"com"
+											],
+											"path": [
+												"api",
+												"v1",
+												"systems",
+												"{{systemId}}",
+												"smarthome",
+												"thermostats"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "System Status",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/status/system",
+									"protocol": "https",
+									"host": [
+										"api",
+										"nibeuplink",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"systems",
+										"{{systemId}}",
+										"status",
+										"system"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "System Software",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/software",
+									"protocol": "https",
+									"host": [
+										"api",
+										"nibeuplink",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"systems",
+										"{{systemId}}",
+										"software"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "System ID",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"nibeuplink",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"systems",
+										"{{systemId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "System Units",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/units",
+									"protocol": "https",
+									"host": [
+										"api",
+										"nibeuplink",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"systems",
+										"{{systemId}}",
+										"units"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "System Unit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/status/systemUnit/0",
+									"protocol": "https",
+									"host": [
+										"api",
+										"nibeuplink",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"systems",
+										"{{systemId}}",
+										"status",
+										"systemUnit",
+										"0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "System Config",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.nibeuplink.com/api/v1/systems/{{systemId}}/config",
+									"protocol": "https",
+									"host": [
+										"api",
+										"nibeuplink",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"systems",
+										"{{systemId}}",
+										"config"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Systems",
+					"item": [
+						{
+							"name": "Systems",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.nibeuplink.com/api/v1/systems",
+									"protocol": "https",
+									"host": [
+										"api",
+										"nibeuplink",
+										"com"
+									],
+									"path": [
+										"api",
+										"v1",
+										"systems"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "12345",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "systemId",
+			"value": "12345",
+			"type": "string"
+		},
+		{
+			"key": "serialno",
+			"value": "12345"
+		},
+		{
+			"key": "client_id",
+			"value": "12345",
+			"type": "string"
+		},
+		{
+			"key": "scope",
+			"value": "READSYSTEM",
+			"type": "string"
+		},
+		{
+			"key": "redirect_uri",
+			"value": "http://localhost/dummy",
+			"type": "string"
+		},
+		{
+			"key": "state",
+			"value": "dummystate",
+			"type": "string"
+		},
+		{
+			"key": "client_secret",
+			"value": "12345",
+			"type": "string"
+		},
+		{
+			"key": "code",
+			"value": "12345",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": "12345",
+			"type": "string"
+		}
+	]
+}
