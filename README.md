@@ -9,4 +9,4 @@ Open the `1. Authorize endpoint` in a browser and approve the access. The browse
 
 Now Send the `2. Token endpoint - Authorization Token` request. This returns an `access_token`. Fill this in as the Bearer Token in the `Authorization` tab of the `Functions` folder in the Postman collection.
 
-Now you can explore the `Functions` endpoints. When your access token expires, repeat the procedure or use the `refresh_token` which is returned under (2.) to regularly obtain a new access token.
+Now you can explore the `Functions` endpoints. When your access token expires, repeat the procedure or use the `refresh_token` which is returned under (2.) to regularly obtain a new access token using the request `3. Token endpoint - Refresh Token'.
