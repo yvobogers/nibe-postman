@@ -1,8 +1,7 @@
 # nibe-postman
-## Postman collection for the NIBE Uplink API
-
 Before using, make sure you have created a NIBE Uplink account and you have registered a new application. For more information see: https://api.nibeuplink.com/Home/About
 
+### How to use
 * Import the collection and update the Variables to correctly reflect the `client_id` and `client_secret` that NIBE assigned to you. Fill in `redirect_uri` and `state` (can be anything). 
 
 * Open the `1. Authorize endpoint` in a browser and approve the access. The browser returns your application code in a `200 OK` with a JSON response. Fill in this code in Postman in the `code` collection variable. 
